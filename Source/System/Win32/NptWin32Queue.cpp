@@ -24,7 +24,7 @@
 #include "NptDebug.h"
 #include "NptLogging.h"
 
-#if !defined(WINAPI_FAMILY) || WINAPI_FAMILY == WINAPI_FAMILY_DESKTOP_APP
+#if !defined(WINAPI_FAMILY) || WINAPI_FAMILY == WINAPI_FAMILY_DESKTOP_APP || defined(TARGET_WINDOWS_STORE)
 // for XBox, Windows 7 Desktop or earlier
 #include "NptWin32Threads.h"
 #elif WINAPI_FAMILY == WINAPI_FAMILY_APP
@@ -55,7 +55,7 @@ private:
     // members
     NPT_Cardinal             m_MaxItems;
 
-#if !defined(WINAPI_FAMILY) || WINAPI_FAMILY == WINAPI_FAMILY_DESKTOP_APP
+#if !defined(WINAPI_FAMILY) || WINAPI_FAMILY == WINAPI_FAMILY_DESKTOP_APP || defined(TARGET_WINDOWS_STORE)
     // for XBox, Windows 7 Desktop or earlier
     NPT_Win32CriticalSection m_Mutex;
     NPT_Win32Event*          m_CanPushCondition;
@@ -76,7 +76,7 @@ private:
 NPT_Win32Queue::NPT_Win32Queue(NPT_Cardinal max_items) : 
     m_MaxItems(max_items)
 {
-#if !defined(WINAPI_FAMILY) || WINAPI_FAMILY == WINAPI_FAMILY_DESKTOP_APP
+#if !defined(WINAPI_FAMILY) || WINAPI_FAMILY == WINAPI_FAMILY_DESKTOP_APP || defined(TARGET_WINDOWS_STORE)
     // for XBox, Windows 7 Desktop or earlier
     m_CanPushCondition = new NPT_Win32Event(true, true);
     m_CanPopCondition  = new NPT_Win32Event(true, false);
