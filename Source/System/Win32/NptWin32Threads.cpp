@@ -636,10 +636,10 @@ NPT_Win32Thread::Wait(NPT_Timeout timeout /* = NPT_TIMEOUT_INFINITE */)
     } else {
         return NPT_SUCCESS;
     }
-|   NPT_Win32Thread::CancelBlockerSocket
 }
 
 /*----------------------------------------------------------------------
+|   NPT_Win32Thread::CancelBlockerSocket
 +---------------------------------------------------------------------*/
 NPT_Result
 NPT_Win32Thread::CancelBlockerSocket()
